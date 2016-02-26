@@ -22,21 +22,20 @@ public class LString {
 
   public LString() {
     //construct an LString object, which will represent an empty list of chars
-    front = this.front;
-    length = 0;
+    front = null;
   }
 
+  //Construct LString object that is a copy of a String
   public LString(String original) {
-    //Construct LString object which will represent same chars as original (ie a copy)
-    // you MAY use String charAt method here
     if (original.length() > 0) {
-      node front = new node(original.charAt(0));
+      front = new node(original.charAt(0));
       node curr = front;
+      System.out.println("data" + curr.data);
       length++;
       //System.out.println(curr.data);
       for (int i = 1; i < original.length(); i++) {
         curr.next = new node(original.charAt(i));
-        //System.out.println(curr.next.data);
+        System.out.println("next data " + curr.next.data);
         length++;
       }
     } else {
@@ -52,15 +51,13 @@ public class LString {
   //Create and return ordinary String with same contents as LString
   // you MAY use string and/or StringBuilder in this method only
   public String toString() {
-    StringBuilder constructedString = new StringBuilder();
+    String result = "";
     node curr = front;
-
     while (curr != null) {
-      constructedString.append(curr.data);
+      result += curr.data;
       curr = curr.next;
     }
-
-    return constructedString.toString();
+  return result;
   }
 
   public int compareTo(LString anotherLString) {
